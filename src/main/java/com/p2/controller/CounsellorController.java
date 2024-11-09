@@ -10,6 +10,8 @@ import com.p2.service.CounsellorServiceImplementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +35,6 @@ public class CounsellorController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequestDto dto) {
-		//TODO: process POST request
 		return counsellorService.login(dto);
 	}
 	
@@ -51,5 +52,16 @@ public class CounsellorController {
 	public ResponseEntity<?>updatePhone(@RequestParam Integer cid,@RequestParam Long phone){
 		return counsellorService.updatePhone(cid, phone);
 	}
+	
+	@GetMapping("/getcounsellor")
+	public ResponseEntity<?> getCounsellor(@RequestParam Integer cid) {
+		return counsellorService.getCouncelor(cid);
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> deleteCounsellor(@RequestParam Integer cid) {
+		return counsellorService.deleteCouncelor(cid);
+	}
+	
 
 }

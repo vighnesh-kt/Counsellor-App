@@ -1,5 +1,6 @@
 package com.p2.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -93,40 +94,57 @@ public class CounsellorServiceImplementation implements CounsellorService {
 
 	@Override
 	public ResponseEntity<?> updateStatus(Integer cid, Status status) {
-		Counsellor c=counsellorDao.findById(cid)
-				.orElseThrow(()->new CounsellorNotFound("Counsellor Not Found"));
+		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor Not Found"));
 		c.setStatus(status);
-		Counsellor saved=counsellorDao.save(c);
-		ResponseStructure<Status> rs=new ResponseStructure<>();
+		Counsellor saved = counsellorDao.save(c);
+		ResponseStructure<Status> rs = new ResponseStructure<>();
 		rs.setStatusCode(HttpStatus.OK.value());
 		rs.setMessege("Status Updated");
 		rs.setData(saved.getStatus());
-		return new ResponseEntity<>(rs,HttpStatus.OK);
+		return new ResponseEntity<>(rs, HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<?> updatePhone(Integer cid, Long phone) {
-		Counsellor c=counsellorDao.findById(cid)
-				.orElseThrow(()->new CounsellorNotFound("Counsellor Not Found"));
+		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor Not Found"));
 		c.setPhone(phone);
-		Counsellor saved=counsellorDao.save(c);
-		ResponseStructure<Long> rs=new ResponseStructure<>();
+		Counsellor saved = counsellorDao.save(c);
+		ResponseStructure<Long> rs = new ResponseStructure<>();
 		rs.setStatusCode(HttpStatus.OK.value());
 		rs.setMessege("Phone Updated");
 		rs.setData(saved.getPhone());
-		return new ResponseEntity<>(rs,HttpStatus.OK);
+		return new ResponseEntity<>(rs, HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<?> getCouncelor(Integer cid) {
-		// TODO Auto-generated method stub
-		return null;
+		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor not found"));
+		ResponseStructure<CounsellorDto> rs = new ResponseStructure<>();
+		CounsellorDto dto = new CounsellorDto();
+		BeanUtils.copyProperties(c, dto);
+		rs.setData(dto);
+		rs.setMessege("Counsellor Fetched");
+		rs.setStatusCode(HttpStatus.OK.value());
+		return new ResponseEntity<>(rs, HttpStatus.OK);
+
 	}
 
 	@Override
 	public ResponseEntity<?> deleteCouncelor(Integer cid) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean isRemoved = counsellorDao.remove(cid); // Assume remove returns a boolean indicating success/failure
+
+		if (!isRemoved) {
+			ResponseStructure<String> rs = new ResponseStructure<>();
+			rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+			rs.setMessege("Counselor not found");
+			return new ResponseEntity<>(rs, HttpStatus.NOT_FOUND);
+		}
+
+		ResponseStructure<Integer> rs = new ResponseStructure<>();
+		rs.setStatusCode(HttpStatus.OK.value());
+		rs.setMessege("Counselor Deleted");
+		rs.setData(cid);
+		return new ResponseEntity<>(rs, HttpStatus.OK);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.p2.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,30 @@ public class CounsellorDao {
 
 	@Autowired
 	CounsellorRepository counsellorRepository;
-	
+
 	public Optional<Counsellor> findByEmail(String email) {
 		return counsellorRepository.findByEmail(email);
 	}
 
 	public Counsellor save(Counsellor counsellor) {
-		return counsellorRepository.save(counsellor);		
+		return counsellorRepository.save(counsellor);
 	}
 
 	public Optional<Counsellor> findById(Integer cid) {
-		// TODO Auto-generated method stub
+
 		return counsellorRepository.findById(cid);
+	}
+
+	public List<Counsellor> findAll() {
+
+		return null;
+	}
+
+	public boolean remove(Integer cid) {
+		if (counsellorRepository.existsById(cid)) { 
+			counsellorRepository.deleteById(cid); 
+			return true; 
+		}
+		return false;
 	}
 }
