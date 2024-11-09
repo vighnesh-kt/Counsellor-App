@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.p2.enums.Status;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +23,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="counselor_info")
-public class Counselor {
+public class Counsellor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,9 +39,10 @@ public class Counselor {
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	private String status;
+	@Column(nullable = false)
+	private Status status=Status.ACTIVE;
 	
-	@OneToMany(mappedBy = "councelor", cascade = CascadeType.ALL )
+	@OneToMany(mappedBy = "counsellor", cascade = CascadeType.ALL )
 	private List<Enquiry> enquiry;
 	
 	@CreationTimestamp

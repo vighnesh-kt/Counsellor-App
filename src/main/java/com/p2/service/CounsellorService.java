@@ -2,18 +2,20 @@ package com.p2.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.p2.dto.CounselorDto;
+import com.p2.dto.CounsellorDto;
 import com.p2.dto.LoginRequestDto;
+import com.p2.entity.Counsellor;
+import com.p2.enums.Status;
 
-public interface CounselorService {
+public interface CounsellorService {
 
-	ResponseEntity<?> register(CounselorDto counselor);
+	ResponseEntity<?> register(Counsellor counselor);
 	
 	ResponseEntity<?> login(LoginRequestDto dto);
 	
-	ResponseEntity<?> update(Integer cid,CounselorDto dto);
+	ResponseEntity<?> update(Integer cid,CounsellorDto dto);
 	
-	ResponseEntity<?> updateStatus(Integer cid,String status);
+	ResponseEntity<?> updateStatus(Integer cid,Status status);
 	
 	ResponseEntity<?> updatePhone(Integer cid,Long phone);
 	

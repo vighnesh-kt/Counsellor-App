@@ -1,5 +1,8 @@
 package com.p2.entity;
 
+import com.p2.enums.ClassMode;
+import com.p2.enums.Courses;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,14 +32,14 @@ public class Enquiry {
 	private Long phone;
 	
 	@Enumerated(EnumType.STRING)
-	private String course;
+	private Courses course;
 	
 	@Enumerated(EnumType.STRING)
-	private String classMode;
+	private ClassMode classMode;
 	
 	private Integer fees;
 
 	@ManyToOne()
 	@JoinColumn(name = "cid")
-	private Counselor counselor;
+	private Counsellor counsellor;
 }
