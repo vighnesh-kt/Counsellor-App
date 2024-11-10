@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.p2.dao.CounsellorDao;
 import com.p2.dto.CounsellorDto;
+import com.p2.dto.EnquiryDto;
 import com.p2.dto.LoginRequestDto;
 import com.p2.entity.Counsellor;
+import com.p2.entity.Enquiry;
 import com.p2.enums.Status;
 import com.p2.exception.CounsellorNotFound;
 import com.p2.responsestructure.ResponseStructure;
@@ -145,6 +147,26 @@ public class CounsellorServiceImplementation implements CounsellorService {
 		rs.setMessege("Counselor Deleted");
 		rs.setData(cid);
 		return new ResponseEntity<>(rs, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> findAll(Integer cid) {
+		// TODO Auto-generated method stub
+		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor not found"));
+		List<Enquiry> all=c.getEnquiry();
+		if(all!=null) {
+			ResponseStructure<List<Enquiry>> rs = new ResponseStructure<>();
+			rs.setStatusCode(HttpStatus.OK.value());
+			rs.setMessege("All enquries of "+c.getName());
+			rs.setData(all);
+			return new ResponseEntity<>(rs, HttpStatus.OK);
+		}
+		
+		ResponseStructure<String> rs = new ResponseStructure<>();
+		rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+		rs.setMessege("Enquries not found");
+		return new ResponseEntity<>(rs, HttpStatus.NOT_FOUND);
+		
 	}
 
 }

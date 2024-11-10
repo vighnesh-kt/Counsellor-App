@@ -1,5 +1,6 @@
 package com.p2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.p2.enums.ClassMode;
 import com.p2.enums.Courses;
 
@@ -41,5 +42,6 @@ public class Enquiry {
 
 	@ManyToOne()
 	@JoinColumn(name = "cid")
+	@JsonIgnore
 	private Counsellor counsellor;
 }

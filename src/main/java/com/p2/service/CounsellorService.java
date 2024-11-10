@@ -22,4 +22,6 @@ public interface CounsellorService {
 	ResponseEntity<?> getCouncelor(Integer cid);
 	
 	ResponseEntity<?> deleteCouncelor(Integer cid);	
+	
+	ResponseEntity<?> findAll(Integer cid);
 }

@@ -63,5 +63,11 @@ public class CounsellorController {
 		return counsellorService.deleteCouncelor(cid);
 	}
 	
+	@GetMapping("/findall")
+	public ResponseEntity<?> findAll(@RequestParam Integer cid) {
+		return counsellorService.findAll(cid);
+	}
+	
+	
 
 }

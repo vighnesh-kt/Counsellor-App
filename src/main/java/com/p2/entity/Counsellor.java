@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.p2.enums.Status;
 
 import jakarta.persistence.CascadeType;
@@ -22,29 +23,29 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="counselor_info")
+@Table(name = "counselor_info")
 public class Counsellor {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cid;
-	
+
 	private String name;
-	
+
 	@Column(unique = true)
 	private String email;
-	
+
 	private Long phone;
-	
+
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private Status status=Status.ACTIVE;
-	
-	@OneToMany(mappedBy = "counsellor", cascade = CascadeType.ALL )
+	private Status status = Status.ACTIVE;
+
+	@OneToMany(mappedBy = "counsellor", cascade = CascadeType.ALL)
 	private List<Enquiry> enquiry;
-	
+
 	@CreationTimestamp
 	private LocalDateTime createdDate;
 

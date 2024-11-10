@@ -1,19 +1,29 @@
 package com.p2.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.p2.dao.EnguiryDao;
 import com.p2.dto.EnquiryDto;
+import com.p2.dto.FilterDto;
+import com.p2.entity.Counsellor;
 import com.p2.entity.Enquiry;
 import com.p2.enums.ClassMode;
 import com.p2.enums.Courses;
+import com.p2.exception.CounsellorNotFound;
 import com.p2.exception.EnquiryNotFound;
+import com.p2.repository.CounsellorRepository;
 import com.p2.responsestructure.ResponseStructure;
 
 @Service
@@ -21,9 +31,14 @@ public class EnquiryServiceImplementtion implements EnquiryService {
 
 	@Autowired
 	private EnguiryDao enquiryDao;
+	
+	@Autowired
+	private CounsellorRepository counsellorRepository;
 
 	@Override
-	public ResponseEntity<?> add(Enquiry enquiry) {
+	public ResponseEntity<?> add(Enquiry enquiry,Integer cid) {
+		Counsellor counsellor = counsellorRepository.findById(cid)
+				.orElseThrow(() -> new CounsellorNotFound("Counsellor Does not exist"));
 		Optional<Enquiry>opt=enquiryDao.findByEmail(enquiry.getEmail());
 		if(opt.isPresent()) {
 			ResponseStructure<String> rs=new ResponseStructure<>();
@@ -32,6 +47,7 @@ public class EnquiryServiceImplementtion implements EnquiryService {
 			rs.setData(opt.get().getEmail());
 			return new ResponseEntity<>(rs,HttpStatus.OK);
 		}
+		enquiry.setCounsellor(counsellor);
 		Enquiry saved =enquiryDao.save(enquiry);
 		EnquiryDto dto=new EnquiryDto();
 		BeanUtils.copyProperties(saved, dto);
@@ -45,7 +61,7 @@ public class EnquiryServiceImplementtion implements EnquiryService {
 	@Override
 	public ResponseEntity<?> updateEnquiry(Integer eid,EnquiryDto dto) {
 		// TODO Auto-generated method stub
-		Enquiry e=enquiryDao.findByEmail(dto.getEmail())
+		Enquiry e=enquiryDao.findById(eid)
 				.orElseThrow(()->new EnquiryNotFound("Enquiry not found"));
 		if(dto.getClassMode()!=null) {
 			e.setClassMode(dto.getClassMode());
@@ -57,6 +73,7 @@ public class EnquiryServiceImplementtion implements EnquiryService {
 			e.setEmail(dto.getEmail());
 		}
 		enquiryDao.save(e);
+		BeanUtils.copyProperties(e, dto);
 		ResponseStructure<EnquiryDto> rs=new ResponseStructure<>();
 		rs.setData(dto);
 		rs.setMessege("Enquiry Udated");
@@ -65,21 +82,41 @@ public class EnquiryServiceImplementtion implements EnquiryService {
 	}
 
 	@Override
-	public ResponseEntity<?> filterCourse(Courses courses) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public ResponseEntity<?> filter(FilterDto dto) {
+		Enquiry e =new Enquiry();
+		BeanUtils.copyProperties(dto, e);
+		
+		Example<Enquiry> eg=Example.of(e);//takes entity only
+		
+		List<Enquiry> all = enquiryDao.findAll(eg);
+		
+		ResponseStructure<List<Enquiry>> rs = new ResponseStructure<>();
+		rs.setStatusCode(HttpStatus.OK.value());
+		rs.setMessege("Retrieved Enquiries");
+		rs.setData(all);
 
-	@Override
-	public ResponseEntity<?> filterClassMode(ClassMode classMode) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResponseEntity<ResponseStructure<List<Enquiry>>>(rs, HttpStatus.OK);
 	}
+	
 
 	@Override
 	public ResponseEntity<?> pagination(Integer pageNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		Pageable pageable=PageRequest.of(pageNumber-1,2);
+		Page<Enquiry> all=enquiryDao.findAll(pageable);
+		
+		List<Enquiry> enquiries = all.getContent();	
+		  List<EnquiryDto> enquiriesDto = new ArrayList<>();
+		    for (Enquiry enquiry : enquiries) {
+		        EnquiryDto dto = new EnquiryDto();
+		        BeanUtils.copyProperties(enquiry, dto); // Assuming you have a BeanUtils method to copy properties
+		        enquiriesDto.add(dto);
+		    }
+		
+		ResponseStructure<List<EnquiryDto>> rs = new ResponseStructure<>();
+		rs.setStatusCode(HttpStatus.OK.value());
+		rs.setMessege("Page Retreived");
+		rs.setData(enquiriesDto);
+		return new ResponseEntity<ResponseStructure<List<EnquiryDto>>>(rs, HttpStatus.OK);
 	}
 
 
