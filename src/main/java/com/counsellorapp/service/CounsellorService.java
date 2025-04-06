@@ -19,9 +19,9 @@ public interface CounsellorService {
 	
 	ResponseEntity<?> updatePhone(Integer cid,Long phone);
 	
-	ResponseEntity<?> getCouncelor(Integer cid);
+	ResponseEntity<?> getCounsellor(Integer cid);
 	
-	ResponseEntity<?> deleteCouncelor(Integer cid);	
+	ResponseEntity<?> deleteCounsellor(Integer cid);	
 	
 	ResponseEntity<?> findAll(Integer cid);
 }

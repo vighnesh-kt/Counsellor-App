@@ -1,0 +1,16 @@
+2025-01-25 16:31:19 INFO  com.counsellorapp.Application - Starting Application using Java 17.0.2 with PID 6799 (/Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App/target/classes started by BaBa in /Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App)
+2025-01-25 16:31:19 INFO  com.counsellorapp.Application - No active profile set, falling back to 1 default profile: "default"
+2025-01-25 16:31:20 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-25 16:31:20 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-25 16:31:20 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-25 16:31:20 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-25 16:31:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-25 16:31:21 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@56b153cd
+2025-01-25 16:31:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-25 16:31:21 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-25 16:31:22 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25 16:31:22 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-25 16:31:22 INFO  com.counsellorapp.Application - Started Application in 2.775 seconds (process running for 3.34)
+2025-01-25 16:31:30 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-01-25 16:31:30 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-25 16:31:30 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

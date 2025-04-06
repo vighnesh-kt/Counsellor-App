@@ -1,0 +1,44 @@
+2024-12-26 02:11:34 INFO  com.counsellorapp.Application - Starting Application using Java 17.0.2 with PID 81936 (/Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App/target/classes started by BaBa in /Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App)
+2024-12-26 02:11:34 INFO  com.counsellorapp.Application - No active profile set, falling back to 1 default profile: "default"
+2024-12-26 02:11:35 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-30 - Starting...
+2024-12-26 02:11:35 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-30 - Added connection org.postgresql.jdbc.PgConnection@46b19164
+2024-12-26 02:11:35 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-30 - Start completed.
+2024-12-26 02:11:35 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-26 02:11:35 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26 02:11:35 INFO  com.counsellorapp.Application - Started Application in 0.713 seconds (process running for 24611.575)
+2024-12-26 02:12:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-30 - Shutdown initiated...
+2024-12-26 02:12:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-30 - Shutdown completed.
+2024-12-26 02:12:09 INFO  com.counsellorapp.Application - Starting Application using Java 17.0.2 with PID 81936 (/Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App/target/classes started by BaBa in /Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App)
+2024-12-26 02:12:09 INFO  com.counsellorapp.Application - No active profile set, falling back to 1 default profile: "default"
+2024-12-26 02:12:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Starting...
+2024-12-26 02:12:09 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-31 - Added connection org.postgresql.jdbc.PgConnection@208a1bde
+2024-12-26 02:12:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Start completed.
+2024-12-26 02:12:09 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-26 02:12:09 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26 02:12:09 INFO  com.counsellorapp.Application - Started Application in 0.454 seconds (process running for 24645.915)
+2024-12-26 02:12:17 INFO  com.counsellorapp.aop.LoggerAspect - Method Called findAll
+2024-12-26 02:12:17 INFO  c.c.s.CounsellorServiceImplementation - All enquires for thee counsellor is :1
+2024-12-26 02:12:17 INFO  com.counsellorapp.aop.LoggerAspect -  Method Executed findAll
+2024-12-26 02:23:18 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Shutdown initiated...
+2024-12-26 02:23:18 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-31 - Shutdown completed.
+2024-12-26 02:23:18.308 [INFO] com.counsellorapp.Application {1.}[restartedMain] Starting Application using Java 17.0.2 with PID 81936 (/Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App/target/classes started by BaBa in /Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App) 
+.2024-12-26 02:23:18.308 [INFO] com.counsellorapp.Application {1.}[restartedMain] No active profile set, falling back to 1 default profile: "default" 
+.2024-12-26 02:23:18.560 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[restartedMain] HikariPool-32 - Starting... 
+.2024-12-26 02:23:18.595 [INFO] com.zaxxer.hikari.pool.HikariPool {1.}[restartedMain] HikariPool-32 - Added connection org.postgresql.jdbc.PgConnection@61cec11a 
+.2024-12-26 02:23:18.596 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[restartedMain] HikariPool-32 - Start completed. 
+.2024-12-26 02:23:18.608 [WARN] org.hibernate.orm.deprecation {1.}[restartedMain] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+.2024-12-26 02:23:18.748 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration {1.}[restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+.2024-12-26 02:23:18.849 [INFO] com.counsellorapp.Application {1.}[restartedMain] Started Application in 0.558 seconds (process running for 25314.825) 
+.2024-12-26 02:30:40.987 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[Thread-126] HikariPool-32 - Shutdown initiated... 
+.2024-12-26 02:30:40.995 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[Thread-126] HikariPool-32 - Shutdown completed. 
+.2024-12-26 02:30:41.107 [INFO] com.counsellorapp.Application {1.}[restartedMain] Starting Application using Java 17.0.2 with PID 81936 (/Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App/target/classes started by BaBa in /Users/BaBa/workspace-spring-tool-suite-4-4.26.0.RELEASE/Projects/Counsellor-App) 
+.2024-12-26 02:30:41.107 [INFO] com.counsellorapp.Application {1.}[restartedMain] No active profile set, falling back to 1 default profile: "default" 
+.2024-12-26 02:30:41.356 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[restartedMain] HikariPool-33 - Starting... 
+.2024-12-26 02:30:41.396 [INFO] com.zaxxer.hikari.pool.HikariPool {1.}[restartedMain] HikariPool-33 - Added connection org.postgresql.jdbc.PgConnection@1dabcbd7 
+.2024-12-26 02:30:41.396 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[restartedMain] HikariPool-33 - Start completed. 
+.2024-12-26 02:30:41.411 [WARN] org.hibernate.orm.deprecation {1.}[restartedMain] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+.2024-12-26 02:30:41.549 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration {1.}[restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+.2024-12-26 02:30:41.650 [INFO] com.counsellorapp.Application {1.}[restartedMain] Started Application in 0.56 seconds (process running for 25757.64) 
+.2024-12-26 02:32:32.255 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[Thread-130] HikariPool-33 - Shutdown initiated... 
+.2024-12-26 02:32:32.257 [INFO] com.zaxxer.hikari.HikariDataSource {1.}[Thread-130] HikariPool-33 - Shutdown completed. 
+.

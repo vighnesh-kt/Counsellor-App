@@ -55,12 +55,12 @@ public class CounsellorController {
 	
 	@GetMapping("/getcounsellor")
 	public ResponseEntity<?> getCounsellor(@RequestParam Integer cid) {
-		return counsellorService.getCouncelor(cid);
+		return counsellorService.getCounsellor(cid);
 	}
 	
 	@DeleteMapping("/delete")
 	public ResponseEntity<?> deleteCounsellor(@RequestParam Integer cid) {
-		return counsellorService.deleteCouncelor(cid);
+		return counsellorService.deleteCounsellor(cid);
 	}
 	
 	@GetMapping("/findall")

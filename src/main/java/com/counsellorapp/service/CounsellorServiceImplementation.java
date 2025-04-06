@@ -3,6 +3,8 @@ package com.counsellorapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +21,16 @@ import com.counsellorapp.enums.Status;
 import com.counsellorapp.exception.CounsellorNotFound;
 import com.counsellorapp.responsestructure.ResponseStructure;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class CounsellorServiceImplementation implements CounsellorService {
 
 	@Autowired
 	private CounsellorDao counsellorDao;
+	
+	//public static final Logger logger =LoggerFactory.getLogger(CounsellorServiceImplementation.class);
 
 	@Override
 	public ResponseEntity<?> register(Counsellor counsellor) {
@@ -47,7 +54,6 @@ public class CounsellorServiceImplementation implements CounsellorService {
 
 			return new ResponseEntity<ResponseStructure<CounsellorDto>>(rs, HttpStatus.OK);
 		}
-
 	}
 
 	@Override
@@ -119,7 +125,7 @@ public class CounsellorServiceImplementation implements CounsellorService {
 	}
 
 	@Override
-	public ResponseEntity<?> getCouncelor(Integer cid) {
+	public ResponseEntity<?> getCounsellor(Integer cid) {
 		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor not found"));
 		ResponseStructure<CounsellorDto> rs = new ResponseStructure<>();
 		CounsellorDto dto = new CounsellorDto();
@@ -132,7 +138,7 @@ public class CounsellorServiceImplementation implements CounsellorService {
 	}
 
 	@Override
-	public ResponseEntity<?> deleteCouncelor(Integer cid) {
+	public ResponseEntity<?> deleteCounsellor(Integer cid) {
 		boolean isRemoved = counsellorDao.remove(cid); // Assume remove returns a boolean indicating success/failure
 
 		if (!isRemoved) {
@@ -152,6 +158,7 @@ public class CounsellorServiceImplementation implements CounsellorService {
 	@Override
 	public ResponseEntity<?> findAll(Integer cid) {
 		// TODO Auto-generated method stub
+		log.info("All enquires for thee counsellor is :{}",cid);
 		Counsellor c = counsellorDao.findById(cid).orElseThrow(() -> new CounsellorNotFound("Counsellor not found"));
 		List<Enquiry> all=c.getEnquiry();
 		if(all!=null) {
